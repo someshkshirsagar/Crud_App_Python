@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+</head>
+<body>
+    <h1>Place Order</h1>
+ 
+    <form action="{% url 'place_order' %}" method="POST">
+        {% csrf_token %}
+        <label for="customer">Customer:</label>
+        <select name="customer" id="customer">
+            {% for customer in customers %}
+                <option value="{{ customer.id }}">{{ customer.name }} </option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="product">Product:</label>
+        <select name="product" id="product">
+            {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }} </option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" min="1" required>
+        <br>
+        <a href="{% url 'place_order' %}"><button id="new3" type="submit">Place order</button></a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<!-- name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    stock_quantity = models.PositiveIntegerField()
+    description = models.TextField(blank=True) -->
+<body>
+    <div class="container">
+        <h1>Products</h1>
+        <table id="customers" border="1">
+            <thead>
+                <!-- <th>Id</th> -->
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <!-- <th colspan="2" id="mid">Action</th> -->
+            </thead>
+           
+            {% for product in products %}
+            <tr>
+               <!-- <td>{{product.id}}</td> -->
+               <td>{{product.name}}</td>
+               <td>{{product.price}}</td>
+               <td>{{product.stock_quantity}}</td>
+               <td>{{product.description}}</td>
+
+               <!-- <td>
+                <a href=""><button id="up">Update</button></a>
+            </td>
+            <td>
+                <a href="delete/{{x.id}}"><button id="del">Delete</button></a>
+            </td> -->
+
+            </tr>
+            {% endfor %}
+        </table>
+        <br><br>
+        <a href="{% url 'add_product' %}"><button id="new3">Add Product</button></a>
+
+        <a href="{% url 'order' %}"><button id="new3">Order</button></a>
+        
+    </div>
+</body>
+
+</html>
